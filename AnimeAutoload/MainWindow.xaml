@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimeAutoload"
         mc:Ignorable="d"
-        Title="AnimeAutoload" Height="500" Width="700">
+        Title="AnimeAutoload" Height="500" Width="1000">
     <Grid RenderTransformOrigin="0.5,0.524">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition />
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="400"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition />
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="250"/>
         </Grid.RowDefinitions>
         <Border Grid.Column="0" Grid.Row="0" Height="35" Padding="5" Background="#4E87D4">
             <Label VerticalAlignment="Center" Foreground="White">방영중 애니</Label>
@@ -26,26 +26,30 @@
         <Border Grid.Column="2" Grid.Row="0" Height="35" Padding="5" Background="#4E87D4">
             <Label VerticalAlignment="Center" Foreground="White">토렌트 및 자막</Label>
         </Border>
-        <ListBox Name="AnimeListBox" Grid.Column="0" Grid.Row="1" Initialized="AnimeListBox_Initialized" MouseDoubleClick="AnimeListBox_MouseDoubleClick">
+        <ListBox Name="AnimeListBox" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" MouseDoubleClick="AnimeListBox_MouseDoubleClick">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding title}" />
                 </DataTemplate>    
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox Name="MyAnimeListBox" Grid.Column="1" Grid.Row="1" Initialized="MyAnimeListBox_Initialized" MouseDoubleClick="MyAnimeListBox_MouseDoubleClick">
+        <ListBox Name="MyAnimeListBox" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"  SelectionChanged="MyAnimeListBox_SelectionChanged" MouseDoubleClick="MyAnimeListBox_MouseDoubleClick">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding title}" />
+                    <Grid Margin="0,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Ellipse Grid.Column="0" Width="10" Height="10" Fill="{Binding color}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding title}" />
+                    </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox Name="SelectedAnimeListBox" Grid.Column="2" Grid.Row="1">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding title}" />
-                </DataTemplate>
-            </ListBox.ItemTemplate>
+        <ListBox Name="TorrentListBox" Grid.Column="2" Grid.Row="1" MouseDoubleClick="TorrentListBox_MouseDoubleClick">
+        </ListBox>
+        <ListBox Name="SubtitleListBox" Grid.Column="2" Grid.Row="2" MouseDoubleClick="SubtitleListBox_MouseDoubleClick">
         </ListBox>
     </Grid>
 </Window>
