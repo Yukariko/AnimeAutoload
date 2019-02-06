@@ -89,13 +89,7 @@ namespace AnimeAutoload
 
         private void MyAnimeListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (MyAnimeListBox.SelectedItem == null)
-            {
-                return;
-            }
 
-            Anime ani = (Anime)MyAnimeListBox.SelectedItem;
-            RemoveAnime(ani);
         }
 
         public JArray GetAnimeData(string url)
@@ -318,7 +312,16 @@ namespace AnimeAutoload
             }
         }
 
- 
+        private void MyAnimeListBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key != Key.Delete || MyAnimeListBox.SelectedItem == null)
+            {
+                return;
+            }
+
+            Anime ani = (Anime)MyAnimeListBox.SelectedItem;
+            RemoveAnime(ani);
+        }
     }
 
     public class Anime

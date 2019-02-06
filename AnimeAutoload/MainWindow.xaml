@@ -33,7 +33,7 @@
                 </DataTemplate>    
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox Name="MyAnimeListBox" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"  SelectionChanged="MyAnimeListBox_SelectionChanged" MouseDoubleClick="MyAnimeListBox_MouseDoubleClick">
+        <ListBox Name="MyAnimeListBox" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"  SelectionChanged="MyAnimeListBox_SelectionChanged" KeyDown="MyAnimeListBox_KeyDown">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="0,2">
